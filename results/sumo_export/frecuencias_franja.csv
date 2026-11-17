@@ -1,0 +1,6 @@
+franja,intervalo_programado_min,buses_hora_programado,flota_programado,intervalo_propuesto_min,buses_hora_propuesto,flota_propuesto
+valle,8.0,7.5,16,10.0,6.0,13
+pico_manana,8.0,7.5,16,10.0,6.0,13
+mediodia,8.0,7.5,16,10.0,6.0,13
+pico_tarde,8.0,7.5,16,10.0,6.0,13
+noche,8.0,7.5,16,10.0,6.0,13

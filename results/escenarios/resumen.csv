@@ -1,0 +1,2 @@
+id,nombre,mult,flota,fondo,intervalo_min,pasajeros,espera_media_min,espera_p95_min,ocupacion_p95,no_atendidos_pct,cv_headway,bunching_pct,horas_bus,max_buses_simultaneos,retrasos_flota,costo_total_usd
+E1,Línea base (horario GTFS),1.0,20,True,8.0,8342,4.71,8.667,0.2625,0.0,0.1491,0.248,233.92,17,0,7484.9

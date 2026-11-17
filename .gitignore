@@ -1,0 +1,34 @@
+# Entorno
+venv/
+.venv/
+__pycache__/
+*.pyc
+.streamlit/secrets.toml
+
+# Datos de entrada pesados (se copian a mano, ver README)
+data/cuenca_ciudad.net.xml
+data/gtfs_3lineas.zip
+
+# Intermedios de SUMO (se regeneran con run_all.sh)
+data/*.xml
+data/*.trips.xml
+results/**/*.xml
+results/**/personas*.csv
+results/barrido/**/despachos.csv
+*.log
+
+# Config temporal de la app
+config/escenario.yaml
+
+# SÍ se versionan: CSV/JSON/PNG/HTML de resultados, modelos/*.yaml, data/*.csv
+!data/*.csv
+
+# Modelo entrenado (se regenera con 06_entrenar.py; puede pesar >50 MB)
+models/*.joblib
+
+# Temporales de gtfs2pt y corridas de prueba
+fcd/
+input/
+resources/
+results/prueba_fondo/
+results/sim/

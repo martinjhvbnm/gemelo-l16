@@ -1,0 +1,8 @@
+{
+  "modelo_MAE": 1.4577273005682205,
+  "ingenuo_lag7_MAE": 1.9651567944250872,
+  "media7_MAE": 1.7539015606242494,
+  "total_dia_error_pct": -4.379202928977526,
+  "n_test": 29274,
+  "origen_dato": "sintetico"
+}

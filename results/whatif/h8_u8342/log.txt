@@ -1,0 +1,33 @@
+/home/vanet/results/IntercicloBarbecho/gemelo_l16/gemelo_l16/scripts/sim.py:227: UserWarning: API change now handles step as floating point seconds
+  self.con.simulationStep(objetivo)
+ Retrying in 1 seconds
+{
+  "pasajeros": 8342,
+  "espera_media_min": 4.782,
+  "espera_p95_min": 8.833,
+  "no_atendidos_pct": 0.0,
+  "ocupacion_media": 0.128,
+  "ocupacion_p95": 0.275,
+  "hacinamiento_pct": 0.067,
+  "cv_headway": 0.1792,
+  "bunching_pct": 0.342,
+  "despachos": 125,
+  "horas_bus": 233.39,
+  "ciclo_medio_min": 122.61,
+  "costo_espera_usd": 1662.2,
+  "costo_operacion_usd": 5834.6,
+  "costo_total_usd": 7496.8,
+  "mult": 1.0,
+  "semilla": 1,
+  "flota": 20,
+  "pasajeros_generados": 8342,
+  "retrasos_flota": 0,
+  "max_buses_simultaneos": 17,
+  "plan": "{\"valle\": 8.0, \"pico_manana\": 8.0, \"mediodia\": 8.0, \"pico_tarde\": 8.0, \"noche\": 8.0}"
+}
+     franja  pasajeros  espera_media_min  espera_p95_min  no_atendidos_pct  ocupacion_media  ocupacion_p95  ocupacion_max  hacinamiento_pct  buses_distintos  headway_medio_min  headway_prog_min  cv_headway  bunching_pct  ewt_min  horas_bus  buses_equivalentes  intervalo_plan_min
+   mediodia     1480.0          4.056959        7.816667               0.0         0.137813         0.2375         0.3875          0.000000               34           7.982413               8.0    0.125007      0.000000 0.056959  38.358056           15.343222                 8.0
+      noche      669.0          4.242875        8.443333               0.0         0.096479         0.2000         0.2500          0.000000               31           7.967584               8.0    0.180813      0.000000 0.242875  30.773611           15.386806                 8.0
+pico_manana     1843.0          4.338244        8.665000               0.0         0.194227         0.3375         0.9875          0.438982               31           7.811216               8.0    0.219471      2.288022 0.338244  38.277500           15.311000                 8.0
+ pico_tarde     1780.0          4.280824        8.350000               0.0         0.177394         0.3125         0.3875          0.000000               34           8.048754               8.0    0.193425      0.000000 0.280824  38.243611           15.297444                 8.0
+      valle     2570.0          6.005765       20.564167               0.0         0.106216         0.1875         0.6000          0.000000               81           7.992325               8.0    0.171484      0.000000 2.005765  87.732778           14.037244                 8.0

@@ -1,0 +1,79 @@
+# Escenarios adicionales (no usados en el informe). Para activarlos, cópialos a escenarios.yaml
+escenarios:
+  E3:
+    nombre: Domingo / feriado (demanda baja)
+    pregunta: ¿Es razonable el intervalo de 15 min del GTFS para el domingo?
+    plan:
+      constante: 15
+    mult: 0.45
+    flota: 20
+    fondo: true
+    esperado: Espera ≈ 7,5 min (H/2) y buses casi vacíos (ocupación p95 < 25 %); ~9
+      buses.
+  E4:
+    nombre: Demanda doble con el horario actual
+    pregunta: Si la demanda se duplica, ¿alcanza el horario de 8 min?
+    plan: base
+    mult: 2.0
+    flota: 20
+    fondo: true
+    esperado: La espera casi no cambia (≈ 4,9 min) pero la ocupación p95 sube (~55–65
+      %).
+  E5:
+    nombre: Demanda doble con plan optimizado por franja
+    pregunta: ¿Qué plan por franja propone la herramienta si la demanda se duplica?
+    plan:
+      optimizar: 5
+    mult: 2.0
+    flota: 20
+    fondo: true
+    esperado: Plan por franja (puede diferenciar picos y valles); ver plan.yaml del
+      escenario.
+  E6:
+    nombre: Saturación (demanda triple, bus cada 15 min)
+    pregunta: ¿Qué pasa cuando los buses no alcanzan para la demanda?
+    plan:
+      constante: 15
+    mult: 3.0
+    flota: 20
+    fondo: true
+    esperado: Ocupación p95 ≈ 100 %, pasajeros que se quedan sin subir y espera muy
+      superior a H/2.
+  E7:
+    nombre: Más frecuencia de la que permite la flota
+    pregunta: ¿Sirve programar un bus cada 4 min con solo 20 buses?
+    plan:
+      constante: 4
+    mult: 1.0
+    flota: 20
+    fondo: true
+    esperado: Los buses se agotan y circulan en pelotón; espera ≫ 2 min (15–20 min)
+      pese al intervalo corto.
+  E8:
+    nombre: Bus cada 4 min con flota ilimitada
+    pregunta: ¿Cuántos buses haría falta para salir cada 4 min?
+    plan:
+      constante: 4
+    mult: 1.0
+    flota: 0
+    fondo: true
+    esperado: Espera ≈ 2 min, pero ~31 buses en servicio (casi el doble de la flota
+      disponible).
+  E9:
+    nombre: Flota reducida (12 buses) con horario actual
+    pregunta: ¿Qué pasa si salen de servicio 8 buses (mantenimiento, paro)?
+    plan: base
+    mult: 1.0
+    flota: 12
+    fondo: true
+    esperado: Salidas aplazadas (retrasos por flota); intervalo real ≈ 10–11 min y
+      más espera.
+  E10:
+    nombre: Línea base sin tráfico de fondo
+    pregunta: ¿Cuánto influye el tráfico de la ciudad en la regularidad de la L16?
+    plan: base
+    mult: 1.0
+    flota: 20
+    fondo: false
+    esperado: Comparar con E1 — CV del intervalo y bunching algo menores; ciclo algo
+      más corto.

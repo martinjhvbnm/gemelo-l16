@@ -1,0 +1,57 @@
+{
+  "tipo": "rf",
+  "hp": {},
+  "validacion": "leave-one-demand-level-out (0.5x, 1x, 1.5x, 2x, 2.5x)",
+  "n_total": 504,
+  "n_test": 336,
+  "corridas_test": 24,
+  "n_train": 437,
+  "rango_intervalo": [
+    6.0,
+    20.0
+  ],
+  "metricas": {
+    "espera_media_min": {
+      "r2": -0.3864,
+      "mae": 3.3305
+    },
+    "espera_p95_min": {
+      "r2": -0.0425,
+      "mae": 14.474
+    },
+    "ocupacion_media": {
+      "r2": 0.9307,
+      "mae": 0.0417
+    },
+    "ocupacion_p95": {
+      "r2": 0.8881,
+      "mae": 0.0682
+    },
+    "bunching_pct": {
+      "r2": 0.1217,
+      "mae": 0.5104
+    },
+    "no_atendidos_pct": {
+      "r2": -0.4068,
+      "mae": 0.3176
+    },
+    "analitico_H/2_espera_media": {
+      "r2": 0.1739,
+      "mae": 2.2145
+    },
+    "mae_espera_por_nivel_retirado": {
+      "0.5x": 0.21,
+      "1x": 0.515,
+      "1.5x": 5.161,
+      "2x": 5.49,
+      "2.5x": 9.055
+    }
+  },
+  "importancia": {
+    "demanda_h": 0.13882119828156142,
+    "intervalo_min": 0.13985745457947577,
+    "flota_lim": 0.0,
+    "hora": 0.1342430570032013,
+    "carga_rel": 0.5870782901357615
+  }
+}

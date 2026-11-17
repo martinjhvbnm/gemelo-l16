@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<configuration>
+  <input>
+    <net-file value="/home/vanet/results/IntercicloBarbecho/gemelo_l16/gemelo_l16/data/cuenca_ciudad.net.xml" />
+    <additional-files value="/home/vanet/results/IntercicloBarbecho/gemelo_l16/gemelo_l16/data/l16_busstops.add.xml,/home/vanet/results/IntercicloBarbecho/gemelo_l16/gemelo_l16/data/l16_rutas.add.xml" />
+    <route-files value="/home/vanet/results/IntercicloBarbecho/gemelo_l16/gemelo_l16/results/sumo_export/l16_programado_buses.rou.xml,/home/vanet/results/IntercicloBarbecho/gemelo_l16/gemelo_l16/results/sumo_export/l16_personas.rou.xml,/home/vanet/results/IntercicloBarbecho/gemelo_l16/gemelo_l16/data/fondo.rou.xml" />
+  </input>
+  <time>
+    <begin value="20400" />
+    <end value="86400" />
+  </time>
+  <output>
+    <tripinfo-output value="/home/vanet/results/IntercicloBarbecho/gemelo_l16/gemelo_l16/results/sumo_export/programado_tripinfo.xml" />
+    <stop-output value="/home/vanet/results/IntercicloBarbecho/gemelo_l16/gemelo_l16/results/sumo_export/programado_stops.xml" />
+  </output>
+  <processing>
+    <ignore-route-errors value="true" />
+    <time-to-teleport value="300" />
+    <pedestrian.model value="nonInteracting" />
+  </processing>
+</configuration>

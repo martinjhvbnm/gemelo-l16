@@ -1,0 +1,33 @@
+# =====================================================================
+#  Escenarios de prueba "What-If" de la Línea 16 (correr uno por uno)
+#    python scripts/11_escenarios.py --listar
+#    python scripts/11_escenarios.py --escenario E3
+#    python scripts/11_escenarios.py --todos --procesos 3
+#  o desde la página "🧪 Escenarios" de la app web.
+#
+#  plan:  base                      → GTFS (8 min en todas las franjas)
+#         {constante: H}            → H minutos todo el día
+#         {archivo: ruta.yaml}      → plan por franja ya calculado (06_entrenar.py)
+#         {optimizar: objetivo_min} → el modelo calcula el plan por franja para esa demanda
+#  mult:  multiplicador de la demanda (1 = día laborable típico ≈ 8 500 usuarios)
+#  flota: máximo de buses (0 = ilimitada)
+# =====================================================================
+escenarios:
+  E1:
+    nombre: Línea base (horario GTFS)
+    pregunta: ¿Cómo funciona hoy la L16 un día laborable?
+    plan: base
+    mult: 1.0
+    flota: 20
+    fondo: true
+    esperado: Espera media ≈ 4,7 min (≈ H/2), ocupación p95 ≈ 27 %, ~16 buses.
+  E2:
+    nombre: Propuesta con objetivo de espera ≤ 6 min
+    pregunta: ¿Qué se gana y qué se pierde saliendo cada 10 min?
+    plan:
+      constante: 10
+    mult: 1.0
+    flota: 20
+    fondo: true
+    esperado: ~13 buses (−20 % horas-bus), espera ≈ 5,6 min (+1 min), ocupación p95
+      ≈ 33 %.

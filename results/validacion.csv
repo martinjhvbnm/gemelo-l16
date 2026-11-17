@@ -1,0 +1,5 @@
+indicador,sumo,real_gtfs,fuente,error_pct
+recorrido_ida_min,56.32871148459386,60.483333333333334,GTFS stop_times.txt (L-V),-6.8690358480123574
+recorrido_vuelta_min,64.12786666666666,65.51666666666667,GTFS stop_times.txt (L-V),-2.1197659628593284
+intervalo_salida_s,480.0,480.0,GTFS frequencies.txt,0.0
+usuarios_dia_linea,8542.2,8500.0,El Mercurio 9-jun-2026: 245 000/día ÷ 35 líneas,0.49647058823530266

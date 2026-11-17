@@ -1,0 +1,13 @@
+/home/vanet/results/IntercicloBarbecho/gemelo_l16/gemelo_l16/scripts/sim.py:227: UserWarning: API change now handles step as floating point seconds
+  self.con.simulationStep(objetivo)
+ Retrying in 1 seconds
+
+=== E1 · Línea base (horario GTFS) ===
+¿Cómo funciona hoy la L16 un día laborable?
+Plan (min por franja): {'valle': 8.0, 'pico_manana': 8.0, 'mediodia': 8.0, 'pico_tarde': 8.0, 'noche': 8.0}
+Pasajeros 8342 | espera 4.71 min (p95 8.7) | ocupación p95 26 % | no atendidos 0.0 % | buses máx 17 | retrasos por flota 0 | CV 0.15 | bunching 0.25 % | horas-bus 233.92
+Esperado: Espera media ≈ 4,7 min (≈ H/2), ocupación p95 ≈ 27 %, ~16 buses.
+
+Resumen de escenarios corridos (DATOS SINTÉTICOS):
+id                    nombre  intervalo_min  mult  flota  espera_media_min  espera_p95_min  ocupacion_p95  no_atendidos_pct  max_buses_simultaneos  horas_bus
+E1 Línea base (horario GTFS)            8.0   1.0     20              4.71            8.67           0.26               0.0                     17     233.92

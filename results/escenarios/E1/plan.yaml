@@ -1,0 +1,14 @@
+escenario:
+  esperado: Espera media ≈ 4,7 min (≈ H/2), ocupación p95 ≈ 27 %, ~16 buses.
+  flota: 20
+  fondo: true
+  mult: 1.0
+  nombre: Línea base (horario GTFS)
+  plan: base
+  pregunta: ¿Cómo funciona hoy la L16 un día laborable?
+intervalo_min:
+  mediodia: 8.0
+  noche: 8.0
+  pico_manana: 8.0
+  pico_tarde: 8.0
+  valle: 8.0

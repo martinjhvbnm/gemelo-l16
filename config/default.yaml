@@ -1,0 +1,115 @@
+# =====================================================================
+#  P6 – Herramienta de frecuencias de buses y paradas · Línea 16 Cuenca
+#  Parámetros POR DEFECTO. Todo es configurable: la app web guarda los
+#  cambios en config/escenario.yaml (que se superpone a este archivo).
+#  Cada parámetro del generador sintético lleva su FUENTE (ver docs/SUPUESTOS.md).
+# =====================================================================
+
+rutas:
+  red: data/cuenca_ciudad.net.xml          # red SUMO (OSM → netconvert)
+  gtfs_zip: data/gtfs_3lineas.zip          # GTFS entregado por el docente
+  gtfs_l16_zip: data/gtfs_l16.zip          # 01_preparar_l16.py
+  paradas_add: data/l16_stops.add.xml      # gtfs2pt → busStop
+  pt_rou: data/l16_pt.rou.xml              # gtfs2pt → rutas/vehículos programados
+  rutas_bus: data/l16_rutas.add.xml        # 03_rutas_bus.py → vType + ruta ciclo
+  paradas_csv: data/l16_paradas.csv        # 03 → paradas ordenadas (+ factor en 04)
+  # DATO DE DEMANDA (formato único: sintético hoy, real de la EMOV mañana):
+  #   stop_id,sentido,fecha,hora,usuarios   ← "usuarios por parada con marca de hora"
+  demanda_csv: data/demanda_parada_hora.csv
+  fondo_rou: data/fondo.rou.xml            # tráfico de fondo (00_trafico_fondo.sh)
+  resultados: results
+  modelos: models
+
+linea:
+  route_id: L16
+  fecha_gtfs: "20230315"        # miércoles dentro de calendar.txt (servicio L-V)
+  palabra_inicio_ida: ESTANCIA  # ida = Estancia San José → Hospital del Río
+
+# Franjas horarias de P6 (valle, pico mañana, mediodía, pico tarde, noche)
+franjas:
+  - {nombre: valle,       desde: "05:45", hasta: "06:30"}
+  - {nombre: pico_manana, desde: "06:30", hasta: "09:00"}
+  - {nombre: valle,       desde: "09:00", hasta: "12:00"}
+  - {nombre: mediodia,    desde: "12:00", hasta: "14:30"}
+  - {nombre: valle,       desde: "14:30", hasta: "17:00"}
+  - {nombre: pico_tarde,  desde: "17:00", hasta: "19:30"}
+  - {nombre: noche,       desde: "19:30", hasta: "21:30"}
+
+servicio:
+  inicio: "05:45"               # GTFS frequencies.txt (lr0f 05:45–21:00, oum0 06:00–21:30)
+  fin: "21:30"
+  margen_fin_min: 150           # minutos extra para que terminen los buses
+  # LÍNEA BASE = programado en el GTFS: 480 s todo el día (L-V)
+  intervalo_programado_min: 8
+  flota_max: 20                 # restricción del proyecto (null = ilimitado, ind. 11)
+
+bus:
+  capacidad: 80                 # bus urbano 12 m (≈ 40 sentados + 40 de pie)
+  t_abordaje_s: 2.0             # TCQSM 3ª ed.: 2–3 s/pasajero, pago a bordo
+  parada_min_s: 8
+  vel_max_ms: 13.9              # 50 km/h urbano
+  costo_hora_bus_usd: 25        # supuesto (documentar en el informe)
+
+demanda:
+  # Indicación del docente: base × factor de cada parada (no igualitario),
+  # aplicado SOBRE el perfil horario.
+  modo: por_parada              # por_parada: base×factor por parada/día · total_linea: base repartida
+  base: 200                     # personas/día por parada antes del factor
+  multiplicador_global: 1.17    # calibra el día típico a ≈ 8 500 usuarios
+  semilla: 42
+  # Calibración: Cuenca ≈ 245 000 personas/día en 35 líneas (El Mercurio, 9-jun-2026)
+  #   → ≈ 7 000 por línea/día. Con ~123 paradas, factor medio ≈ 0.28.
+  # L16 ≈ 16 buses × 516–555 pasajeros/bus/día (El Mercurio) ≈ 8 500
+  objetivo_validacion_dia: 8500
+  factor_mediana: 0.20
+  factor_sigma: 0.6
+  factor_min: 0.05
+  factor_max: 2.0
+  refuerzos:                    # nombre de parada contiene … → × valor (atractores)
+    HOSPITAL: 3.0
+    MALL: 2.5
+    MERCADO: 2.5
+    FERIA: 2.5
+    TERMINAL: 2.5
+    UNIVERSIDAD: 2.2
+    CENTRO: 2.0
+    PARQUE: 1.6
+    COLEGIO: 1.6
+    ESCUELA: 1.4
+  extremo_ruta: 1.8
+  # Perfil horario (peso relativo). Picos 06:30–08:30, 12–14, 17–19 (supuesto a validar
+  # con conteos en parada por franja).
+  perfil_horario: {5: 0.3, 6: 1.4, 7: 2.0, 8: 1.4, 9: 0.9, 10: 0.8, 11: 0.9, 12: 1.4,
+                   13: 1.5, 14: 1.0, 15: 0.9, 16: 1.0, 17: 1.6, 18: 1.8, 19: 1.2, 20: 0.7, 21: 0.3}
+  # Variación entre días (para el dataset de predicción del día siguiente)
+  dias_historico: 56            # 8 semanas sintéticas
+  efecto_dia_semana: {0: 1.00, 1: 1.02, 2: 1.08, 3: 1.02, 4: 1.05, 5: 0.70, 6: 0.45}
+  ruido_dia_sigma: 0.08
+  dist_media_viaje_m: 5000      # Cuenca: viaje medio ≈ 34 min (El Mercurio)
+  min_paradas_viaje: 2
+
+simulacion:
+  paso_s: 1.0
+  sumo_bin: sumo                # sumo o sumo-gui
+  teleport_s: 300
+  trafico_fondo: true           # P6: validar con tráfico de fondo de Cuenca
+  repeticiones: 3               # semillas para comparar base vs propuesta
+
+metricas:
+  umbral_bunching: 0.25         # headway < 25 % del programado
+  espera_objetivo_min: 5
+  ocupacion_objetivo: 0.85
+  valor_tiempo_usd_h: 2.5       # supuesto (documentar)
+
+optimizacion:
+  intervalos_candidatos_min: [3, 4, 5, 6, 7, 8, 10, 12, 15, 20]
+  criterio: servicio            # servicio: máx intervalo con espera ≤ objetivo y ocupación ≤ objetivo
+                                # costo: min (espera·VdT + buses·costo) – con VdT bajo tiende a intervalos largos
+  intervalo_max_min: 15         # política de servicio urbano: nunca más de 15 min
+
+barrido:                        # ind. 7: usuarios × frecuencias
+  intervalos_min: [3, 4, 6, 8, 10, 12, 15, 20]
+  multiplicadores: [0.25, 0.5, 1.0, 2.0, 3.0]
+  flotas: [20]
+  semillas: [1]
+  procesos: 4

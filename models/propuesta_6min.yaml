@@ -1,0 +1,10 @@
+criterio: servicio
+demanda: tipico
+flota_max: 20
+intervalo_min:
+  mediodia: 10.0
+  noche: 10.0
+  pico_manana: 10.0
+  pico_tarde: 10.0
+  valle: 10.0
+mult: 1.0

@@ -1,0 +1,7 @@
+# Corridas extra del barrido (las 6 del informe): densifican la zona de saturación.
+# run_all.sh la copia temporalmente a config/escenario.yaml, corre 05_barrido.py y la borra.
+barrido:
+  intervalos_min: [12, 15, 20]
+  multiplicadores: [1.5, 2.5]
+  flotas: [20]
+  semillas: [1]

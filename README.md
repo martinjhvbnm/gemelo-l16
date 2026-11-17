@@ -6,7 +6,7 @@ Autores: Martin Bravo, Mateo Dután, Sebastián Placencia, Josué Román
 **Problema en una frase:** ¿con qué intervalo debe salir la L16 en cada franja del día para que la espera
 y la ocupación cumplan el nivel de servicio usando la menor cantidad de buses posible (flota ≤ 20)?
 
-> ⚠️ **DATOS SINTÉTICOS.** La demanda por parada y hora es sintética justificada (ver `docs/SUPUESTOS.md`).
+ **DATOS SINTÉTICOS.** La demanda por parada y hora es sintética justificada (ver `docs/SUPUESTOS.md`).
 > Los resultados no son medidas de campo. El dato real de la EMOV se carga con el mismo formato.
 
 ## Lazo dato → modelo → acción → medida → visualización
@@ -48,7 +48,7 @@ python3 -m venv venv && source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-## Datos de entrada (no se versionan)
+## Datos de entrada
 
 Copiar a `data/`:
 - `cuenca_ciudad.net.xml`: red de Cuenca (OSM → `netconvert`)
